@@ -26,13 +26,13 @@ Supports both **text and voice queries**, integrates with **NLP (OpenAI API)**, 
 
 ## 📂 Project Structure
 virtual-ca/
-│── app.py # Flask app entry point
-│── templates/ # HTML templates (home, help, etc.)
+│── app.py               # Flask app entry point
+│── templates/           # HTML templates (home, help, etc.)
 │── utils/
-│ ├── openai_helper.py # Handles AI responses
-│ ├── reverie_helper.py# Voice transcription
-│ └── kanoon_helper.py # Legal/financial info retrieval
-│── static/ # CSS/JS files
+│   ├── openai_helper.py # Handles AI responses
+│   ├── reverie_helper.py# Voice transcription
+│   └── kanoon_helper.py # Legal/financial info retrieval
+│── static/              # CSS/JS files
 ---
 
 ## ⚡ How to Run
