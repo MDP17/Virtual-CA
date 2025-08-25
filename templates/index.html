@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Chartered Accountant | Your Financial Advisor</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="language-toggle">
+        <button id="toggleLang" class="btn btn-outline-primary">
+            <span id="langDisplay">English</span> <i class="fas fa-language"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="/static/images/logo.svg" alt="Virtual CA Logo" class="logo">
+                <h1 class="app-title">
+                    <span class="lang-en">Virtual Chartered Accountant</span>
+                    <span class="lang-hi">वर्चुअल चार्टर्ड अकाउंटेंट</span>
+                </h1>
+            </div>
+            <p class="tagline">
+                <span class="lang-en">Your AI-powered financial advisor for Indian taxation and accounting</span>
+                <span class="lang-hi">भारतीय कराधान और लेखांकन के लिए आपका AI-संचालित वित्तीय सलाहकार</span>
+            </p>
+        </header>
+
+        <main>
+            <div class="row finance-images">
+                <div class="col-md-3">
+                    <img src="https://pixabay.com/get/ga21bf48018229d53e415fa488f87fdb1500e44ee898fa7f9b89351fd96e4759894266719b19c031eb36fb75f92d2e1a2de246c750bf77a61fd27dcc6820a5ea2_1280.jpg" 
+                         alt="Financial Planning" class="img-fluid img-thumbnail">
+                </div>
+                <div class="col-md-3">
+                    <img src="https://pixabay.com/get/gf7952eadc80b6690faa29b4037d045f0a495a3df57294274da300960a6372da2e45f20f5ddc16cd4f2fbac487144a64e08b1b3de756e1cc20db95650db92364e_1280.jpg" 
+                         alt="Financial Consulting" class="img-fluid img-thumbnail">
+                </div>
+                <div class="col-md-3">
+                    <img src="https://pixabay.com/get/gb67052f5f5b0e2861004a63b7618607795878dd8304e128a9ccd1859721fc381b23f12c2b91adf6808b16f9b936452bfdea9a97698dfce4855a634bde81cb8a8_1280.jpg" 
+                         alt="Tax Documents" class="img-fluid img-thumbnail">
+                </div>
+                <div class="col-md-3">
+                    <img src="https://pixabay.com/get/g49e248297ee6ba5df593ff49a1ee9f6eebb95227c320eb1141b831ba63a41754cb279086bc6bce0a8771bd4c406959a7ccf12bd8f98686e2b03ef7b6996c4c01_1280.jpg" 
+                         alt="Indian Tax Forms" class="img-fluid img-thumbnail">
+                </div>
+            </div>
+
+            <section class="query-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>
+                            <span class="lang-en">Ask Your Financial Question</span>
+                            <span class="lang-hi">अपना वित्तीय प्रश्न पूछें</span>
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group mb-3">
+                            <input type="text" id="textQuery" class="form-control" 
+                                   placeholder="Type your question here...">
+                            <button id="submitText" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                <span class="lang-en">Submit</span>
+                                <span class="lang-hi">भेजें</span>
+                            </button>
+                        </div>
+                        
+                        <div class="text-center mb-3">
+                            <span class="lang-en">or speak your question</span>
+                            <span class="lang-hi">या अपना सवाल बोलें</span>
+                        </div>
+                        
+                        <div class="voice-input text-center">
+                            <button id="recordButton" class="btn btn-outline-primary btn-lg rounded-circle">
+                                <img src="/static/images/mic.svg" alt="Microphone" class="mic-icon">
+                            </button>
+                            <p id="recordingStatus">
+                                <span class="lang-en">Click to speak</span>
+                                <span class="lang-hi">बोलने के लिए क्लिक करें</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="response-section mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>
+                            <span class="lang-en">Response</span>
+                            <span class="lang-hi">जवाब</span>
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="loadingIndicator" class="text-center d-none">
+                            <img src="/static/images/loading.svg" alt="Loading" class="loading-icon">
+                            <p class="mt-2">
+                                <span class="lang-en">Processing your query...</span>
+                                <span class="lang-hi">आपकी क्वेरी पर काम हो रहा है...</span>
+                            </p>
+                        </div>
+                        <div id="transcriptionBox" class="alert alert-info d-none">
+                            <strong>
+                                <span class="lang-en">I heard:</span>
+                                <span class="lang-hi">मैंने सुना:</span>
+                            </strong>
+                            <span id="transcriptionText"></span>
+                        </div>
+                        <div id="responseBox" class="response-content">
+                            <p class="initial-message">
+                                <span class="lang-en">Your response will appear here. Try asking about income tax, GST, financial planning, or business accounting!</span>
+                                <span class="lang-hi">आपका जवाब यहां दिखाई देगा। आयकर, जीएसटी, वित्तीय योजना, या व्यापार लेखांकन के बारे में पूछने का प्रयास करें!</span>
+                            </p>
+                        </div>
+                        <div id="errorBox" class="alert alert-danger d-none">
+                            <strong>
+                                <span class="lang-en">Error:</span>
+                                <span class="lang-hi">त्रुटि:</span>
+                            </strong>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="mt-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <p>
+                    <span class="lang-en">&copy; 2024 Virtual CA - Your Financial Advisor</span>
+                    <span class="lang-hi">&copy; 2024 वर्चुअल सीए - आपका वित्तीय सलाहकार</span>
+                </p>
+                <a href="/help" class="btn btn-sm btn-outline-secondary">
+                    <i class="fas fa-question-circle"></i>
+                    <span class="lang-en">Help</span>
+                    <span class="lang-hi">मदद</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
