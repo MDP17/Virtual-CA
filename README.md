@@ -57,6 +57,7 @@ virtual-ca/
 5.Open in your browser:
    http://localhost:5000
 
-##🤝 Contributing
+## 🤝 Contributing
 
-Pull requests are welcome! For major changes, please open an issue first to discuss your ideas.
+Pull requests are welcome!  
+For major changes, please open an issue first to discuss your ideas.
